@@ -25,8 +25,8 @@ export default function TokenHoldings() {
         }
         const data: Token[] = await res.json();
         setTokens(data);
-      } catch (err: any) {
-        setError(err.message || "Unknown error");
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : String(err));
       } finally {
         setLoading(false);
       }
